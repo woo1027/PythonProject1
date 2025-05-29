@@ -1,0 +1,5 @@
+pandas
+numpy
+googletrans==4.0.0rc1
+torch
+scikit-learn
