@@ -1,6 +1,6 @@
 pandas
 numpy
-googletrans==4.0.0rc1
+googletrans== 3.1.0a0
 torch
 scikit-learn
 sklearn-model
@@ -8,3 +8,11 @@ flask
 flask_sqlalchemy
 pyodbc
 transformers
+openpyxl
+pymssql
+fastapi
+uvicorn
+joblib
+xgboost
+lightgbm
+catboost

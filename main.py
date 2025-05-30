@@ -18,7 +18,7 @@
 #
 # if __name__ == "__main__":
 #     main()
-
+#
 
 
 import os
@@ -119,7 +119,7 @@ def train_model_pipeline(csv_path, text_column, label_columns, model_dir, num_ep
 
 # ===== 主程式入口 =====
 if __name__ == "__main__":
-    raw_csv = "C:/Users/user/Downloads/train.csv"
+    raw_csv = "C:/Users/user/Downloads/t.csv"
     processed_csv = "C:/Users/user/PycharmProjects/PythonProject1/translated.csv"
     model_save_dir = "Saved_model"
 
