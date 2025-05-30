@@ -54,3 +54,9 @@ customer-personality-pipeline/
 └── .gitignore
 
 ```
+
+## 成果
+===== Top 3 Models by Cross-Validation Accuracy =====
+1. catboost - Accuracy: 0.8592 ± 0.0128
+2. naive_bayes - Accuracy: 0.8538 ± 0.0163
+3. random_forest - Accuracy: 0.8511 ± 0.0165

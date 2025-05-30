@@ -22,16 +22,28 @@ def train_all_models_with_cv():
     # 定義交叉驗證策略
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
+    results = []
+
     for name, model in models.items():
         print(f"\n==== Training {name.upper()} ====")
-
-        # 交叉驗證
         scores = cross_val_score(model, X, y, cv=cv, scoring='accuracy')
-        print(f"{name} CV Accuracy: {scores.mean():.4f} ± {scores.std():.4f}")
+        mean_acc = scores.mean()
+        std_acc = scores.std()
+        print(f"{name} CV Accuracy: {mean_acc:.4f} ± {std_acc:.4f}")
 
-        # 使用全部資料訓練最終模型並儲存
+        # 儲存模型資訊
+        results.append((name, mean_acc, std_acc))
+
+        # 訓練整體資料並儲存模型
         model.fit(X, y)
         joblib.dump(model, f"outputs/models/{name}.pkl")
+
+        # 根據平均準確度排序
+    results.sort(key=lambda x: x[1], reverse=True)
+
+    print("\n===== Top 3 Models by Cross-Validation Accuracy =====")
+    for rank, (name, mean_acc, std_acc) in enumerate(results[:3], start=1):
+        print(f"{rank}. {name} - Accuracy: {mean_acc:.4f} ± {std_acc:.4f}")
 
 if __name__ == '__main__':
     train_all_models_with_cv()
