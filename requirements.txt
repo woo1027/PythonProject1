@@ -3,3 +3,8 @@ numpy
 googletrans==4.0.0rc1
 torch
 scikit-learn
+sklearn-model
+flask
+flask_sqlalchemy
+pyodbc
+transformers
