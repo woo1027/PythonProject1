@@ -24,7 +24,8 @@
 
 1. 🧓 年齡 (Age)
 
-![image](age_distribution.png)
+![image](plot/age_distribution.png)
+
 - Age ⬇️ vs TotalSpend ⬇️（中度負相關）
 
   年輕人總消費金額較高，顯示潛力族群為年輕族群。 
@@ -38,6 +39,7 @@
   年輕族群對行銷活動回應度更高，可針對此族群推行促銷。
 
 2. 💰 收入 (Income)
+![image](plot/income_by_education.png)
 - Income ⬆️ vs TotalSpend ⬆️（高度正相關）
 
     明確呈現收入越高者，總消費越高，是潛在「高價值客戶」。
@@ -51,6 +53,7 @@
     高收入者不一定對行銷活動有興趣，需搭配其他特徵細分。
 
 3. 📦 各消費產品金額（MntXXX）
+![image](plot/product_spending_bar.png)
 - MntWines、MntGoldProds、MntMeatProducts 間彼此相關性高（> 0.7）
 
     表示消費者若傾向購買某類產品，往往也在其他類別有消費。
@@ -62,6 +65,7 @@
     可將 TotalSpend 作為消費潛力指標。
 
 4. 📅 Recency 與時間/忠誠度變數
+![image](plot/recency_vs_spend.png)
 - Recency ⬆️ vs TotalSpend ⬇️（中度負相關）
 
     越久未消費者，過去總支出也較少，應針對其設計「喚醒活動」。
