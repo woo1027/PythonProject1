@@ -34,7 +34,7 @@ customer-personality-pipeline/
 │
 ├── src/                     # Python 模組：ETL、模型、訓練、預測等
 │   ├── data_loader.py
-│   ├── preprocessing.py
+│   ├── preprocessing.py    
 │   ├── model.py
 │   ├── train.py
 │   └── predict.py
