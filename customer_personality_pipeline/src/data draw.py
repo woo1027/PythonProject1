@@ -51,7 +51,7 @@ def remove_outliers(df, columns):
 
 def plot_age_distribution(df):
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(12, 6))
     sns.histplot(df['Age'], bins=20, kde=True)
     plt.title("顧客年齡分布")
     plt.savefig(f"{OUTPUT_DIR}/age_distribution.png")
@@ -70,7 +70,7 @@ def plot_age_distribution(df):
 
 def plot_total_spend_by_agegroup_life_stage(avg_spend):
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(12, 6))
     sns.barplot(data=avg_spend, x='AgeGroup', y='TotalSpend', palette='Set1')
     plt.title('各生命階段的平均總消費金額')
     plt.xlabel('年齡分組')
@@ -85,7 +85,7 @@ def plot_response_by_agegroup(df):
     response_rate = df.groupby("AgeGroup")["Response"].mean().reset_index()
 
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(12, 6))
     sns.barplot(data=response_rate, x="AgeGroup", y="Response", palette="Set2")
     plt.title("各年齡群對行銷活動的回應率")
     plt.ylabel("平均回應率 (Response)")
@@ -118,7 +118,7 @@ def plot_spending_by_agegroup(df):
 
 def plot_income_by_education(df):
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 6))
     sns.boxplot(x="Education", y="Income", data=df)
     plt.xticks(rotation=45)
     plt.title("不同教育程度的收入分布")
@@ -127,7 +127,7 @@ def plot_income_by_education(df):
 
 def plot_income_by_spend(df):
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 6))
     sns.scatterplot(data=df, x="Income", y="TotalSpend", hue="AgeGroup", alpha=0.6, palette="Set2")
     sns.regplot(data=df, x="Income", y="TotalSpend", scatter=False, color="red", line_kws={"linewidth": 2})
     plt.title("收入 vs 總消費金額")
@@ -145,7 +145,7 @@ def plot_income_vs_mnt_products(df):
     product_cols = ['MntWines', 'MntFruits', 'MntMeatProducts',
                     'MntFishProducts', 'MntSweetProducts', 'MntGoldProds']
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 6))
     corr_matrix = df[["Income"] + product_cols].corr()
 
     sns.heatmap(corr_matrix, annot=True, cmap="YlGnBu", fmt=".2f")
@@ -158,7 +158,7 @@ def plot_spending_distribution(df):
     product_cols = ['MntWines', 'MntFruits', 'MntMeatProducts',
                     'MntFishProducts', 'MntSweetProducts', 'MntGoldProds']
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(12, 6))
     df[product_cols].mean().sort_values().plot(kind='barh')
     plt.title("各產品類別平均消費金額")
     plt.xlabel("平均金額")
@@ -167,7 +167,7 @@ def plot_spending_distribution(df):
 
 def plot_response_by_income(df):
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(12, 6))
     sns.boxplot(x='Response', y='Income', data=df)
     plt.title("行銷響應 vs 收入")
     plt.xticks([0, 1], ['No', 'Yes'])
@@ -176,7 +176,7 @@ def plot_response_by_income(df):
 
 def plot_recency_vs_spend(df):
     matplotlib.rc('font', family='Microsoft JhengHei')
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(12, 6))
     sns.scatterplot(x='Recency', y='TotalSpend', hue='Response', data=df)
     plt.title("Recency 與總消費金額")
     plt.savefig(f"{OUTPUT_DIR}/recency_vs_spend.png")
