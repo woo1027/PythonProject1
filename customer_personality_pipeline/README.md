@@ -28,32 +28,34 @@
 
 ![image](plot/age_distribution.png)
 
-- Age ⬇️ vs TotalSpend ⬇️（中度負相關）
+- Age  vs TotalSpend 
 
-  年輕人總消費金額較高，顯示潛力族群為年輕族群。 
+  年長總消費金額較高，顯示潛力族群為年長族群。 
+![image](plot/barplot_avg_spend_by_lifestage.png)
+
+- Age ⬇️ vs Response ⬆️（正向）
+
+  年輕族群對行銷活動回應度更高，可針對此族群推行促銷。
+![image](plot/response_by_agegroup.png)
 
 - Age ⬇️ vs Children ⬇️（中強負相關）
 
   年輕者更可能有小孩，影響產品偏好（如食物、日常用品）
 
-- Age ⬇️ vs Response ⬆️（可能微弱正向）
-
-  年輕族群對行銷活動回應度更高，可針對此族群推行促銷。
-
 2. 💰 收入 (Income)
-![image](plot/income_by_education.png)
-- Income ⬆️ vs TotalSpend ⬆️（高度正相關）
+
+- Income ⬆️ vs TotalSpend ⬆️（正相關）
 
     明確呈現收入越高者，總消費越高，是潛在「高價值客戶」。
-
-- Income ⬆️ vs MntWines, MntGoldProds ⬆️（中度正相關）
+![image](plot/income_by_spend.png)
+- Income ⬆️ vs MntWines, MntGoldProds ⬆️（正相關）
 
     高價產品有高收入偏好傾向，建議針對此族群做精緻化推薦。
-
+![image](plot/income_vs_product_correlation.png)
 - Income vs Response: 幾乎無相關或輕微負相關
 
     高收入者不一定對行銷活動有興趣，需搭配其他特徵細分。
-
+![response_by_income.png](plot/response_by_income.png)
 3. 📦 各消費產品金額（MntXXX）
 ![image](plot/product_spending_bar.png)
 - MntWines、MntGoldProds、MntMeatProducts 間彼此相關性高（> 0.7）
