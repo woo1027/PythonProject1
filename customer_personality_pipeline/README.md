@@ -24,7 +24,7 @@
 
 1. 🧓 年齡 (Age)
 
-![image](C:/Users/user/PycharmProjects/PythonProject1/customer_personality_pipeline/plot/age_distribution.png)
+![image](age_distribution.png)
 - Age ⬇️ vs TotalSpend ⬇️（中度負相關）
 
   年輕人總消費金額較高，顯示潛力族群為年輕族群。 
