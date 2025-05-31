@@ -72,7 +72,7 @@ def plot_total_spend_by_agegroup_life_stage(avg_spend):
     matplotlib.rc('font', family='Microsoft JhengHei')
     plt.figure(figsize=(12, 6))
     sns.barplot(data=avg_spend, x='AgeGroup', y='TotalSpend', palette='Set1')
-    plt.title('各生命階段的平均總消費金額')
+    plt.title('各年齡群的平均總消費金額')
     plt.xlabel('年齡分組')
     plt.ylabel('平均總消費金額')
     plt.tight_layout()
@@ -91,6 +91,29 @@ def plot_response_by_agegroup(df):
     plt.ylabel("平均回應率 (Response)")
     plt.xlabel("年齡群 AgeGroup")
     plt.savefig(f"{OUTPUT_DIR}/response_by_agegroup.png")
+    plt.close()
+
+
+def plot_channel_usage_by_agegroup(df):
+
+    # 選擇通路欄位
+    channel_cols = ['NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases']
+
+    # 計算各年齡層在各通路的平均值
+    channel_means = df.groupby('AgeGroup')[channel_cols].mean().reset_index()
+
+    # 將寬表轉換為長表以利繪圖
+    df_melted = pd.melt(channel_means, id_vars='AgeGroup', var_name='Channel', value_name='AvgPurchases')
+
+    # 繪圖
+    matplotlib.rc('font', family='Microsoft JhengHei')
+    plt.figure(figsize=(12, 6))
+    sns.barplot(data=df_melted, x='Channel', y='AvgPurchases', hue='AgeGroup')
+    plt.title('不同年齡層在各通路的平均購買次數')
+    plt.ylabel('平均購買次數')
+    plt.xlabel('購物通路')
+    plt.tight_layout()
+    plt.savefig(f"{OUTPUT_DIR}/channel_usage_by_agegroup.png")
     plt.close()
 
 def plot_spending_by_agegroup(df):
