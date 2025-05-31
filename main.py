@@ -46,7 +46,7 @@ def preprocess_and_translate(raw_csv_path, output_csv_path):
 
 # ===== 模型訓練流程 =====
 def train_model_pipeline(csv_path, text_column, label_columns, model_dir, num_epochs=10):
-    start_time = time.time()
+    start_time1 = time.time()
     # 1. 設定模型與訓練參數
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = BERTClassifier(model_name='bert-base-chinese', num_labels=len(label_columns)).to(device)
@@ -105,8 +105,8 @@ def train_model_pipeline(csv_path, text_column, label_columns, model_dir, num_ep
 
         val_accuracy = correct_predictions / total_predictions
         print(f'[Epoch {epoch+1}] Val Loss: {val_loss/len(val_loader):.4f}, Val Accuracy: {val_accuracy:.4f}')
-        elapsed_time = time.time() - start_time
-        print(f"資料前處理與翻譯完成，耗時：{elapsed_time:.2f} 秒")
+        elapsed_time1 = time.time() - start_time1
+        print(f"BERT模型訓練完成，耗時：{elapsed_time1:.2f} 秒")
 
     # 4. 儲存模型與設定
     os.makedirs(model_dir, exist_ok=True)
@@ -119,7 +119,8 @@ def train_model_pipeline(csv_path, text_column, label_columns, model_dir, num_ep
 
 # ===== 主程式入口 =====
 if __name__ == "__main__":
-    raw_csv = "C:/Users/user/Downloads/t.csv"
+    raw_csv = "C:/Users/user/Downloads/train.csv"
+    # raw_csv = "C:/Users/user/Downloads/t.csv"
     processed_csv = "C:/Users/user/PycharmProjects/PythonProject1/translated.csv"
     model_save_dir = "Saved_model"
 
