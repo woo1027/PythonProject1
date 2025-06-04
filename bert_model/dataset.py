@@ -9,6 +9,9 @@ def tokenize_and_encode(tokenizer, texts, labels, max_length=128):
     input_ids = []
     attention_masks = []
 
+    # 處理 NaN 和強制轉換為字串
+    texts = ["" if pd.isna(t) else str(t) for t in texts]
+
     for text in texts:
         encoded = tokenizer.encode_plus(
             text,
@@ -39,6 +42,13 @@ def prepare_dataloader_from_csv(
     val_size=0.2
 ):
     df = pd.read_csv(file_path)
+
+    # 檢查 text_column 是否有 NaN，直接填補空字串
+    df[text_column] = df[text_column].fillna("")
+    # 若 label 欄也有缺失值，可用 0 或直接移除
+    df[label_columns] = df[label_columns].fillna(0)  # 或使用 df.dropna()
+
+
     texts = df[text_column]
     labels = df[label_columns]
 

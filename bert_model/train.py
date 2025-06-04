@@ -1,5 +1,7 @@
 import os
 import json
+import time
+from tqdm import tqdm
 import torch
 import torch.nn as nn
 from transformers import BertTokenizer
@@ -36,6 +38,7 @@ val_accuracy_history = []
 
 # 訓練函數
 def train_model(model, train_loader, val_loader, optimizer, device, num_epochs):
+    start_time1 = time.time()
     model = model.to(device)
     for epoch in range(num_epochs):
         model.train()
@@ -43,7 +46,7 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs):
         correct_predictions = 0
         total_predictions = 0
 
-        for step, batch in enumerate(train_loader):
+        for step, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch + 1} - Training")):
             input_ids, attention_mask, labels = [t.to(device) for t in batch]
 
             optimizer.zero_grad()
@@ -74,7 +77,7 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs):
         total_predictions = 0
 
         with torch.no_grad():
-            for batch in val_loader:
+            for batch in tqdm(val_loader, desc=f"Epoch {epoch+1} - Validation"):
                 input_ids, attention_mask, labels = [t.to(device) for t in batch]
                 outputs = model(input_ids, attention_mask=attention_mask)
                 loss_fn = torch.nn.BCEWithLogitsLoss()
@@ -88,27 +91,27 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs):
         val_accuracy = correct_predictions / total_predictions
         val_loss_history.append(val_loss / len(val_loader))
         val_accuracy_history.append(val_accuracy)
-
         print(f'Epoch {epoch+1}: Train Loss: {total_loss/len(train_loader):.4f}, Train Acc: {train_accuracy:.4f}, Val Loss: {val_loss/len(val_loader):.4f}, Val Acc: {val_accuracy:.4f}')
-
+        elapsed_time1 = time.time() - start_time1
+        print(f"BERT模型訓練完成，耗時：{elapsed_time1:.2f} 秒")
 # 開始訓練
 train_model(model, train_loader, val_loader, optimizer, device, num_epochs=10)
 
 
 # 建立資料夾（若不存在）
-os.makedirs("Saved_model", exist_ok=True)
+os.makedirs("bert_model/Saved_model", exist_ok=True)
 
 # 儲存模型權重
-torch.save(model.state_dict(), "Saved_model/pytorch_model.bin")
+torch.save(model.state_dict(), "bert_model/Saved_model/pytorch_model.bin")
 
 # 儲存 tokenizer
 tokenizer = BertTokenizer.from_pretrained("bert-base-chinese")
-tokenizer.save_pretrained("Saved_model")
+tokenizer.save_pretrained("bert_model/Saved_model")
 
 # 儲存 config.json
 config = {
     "model_type": "bert",
     "num_labels": 6
 }
-with open("Saved_model/config.json", "w", encoding="utf-8") as f:
+with open("bert_model/Saved_model/config.json", "w", encoding="utf-8") as f:
     json.dump(config, f, ensure_ascii=False, indent=2)
