@@ -1,0 +1,47 @@
+body {
+    background: radial-gradient(circle, #222 30%, #000 100%);
+    color: #fff;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-shadow: 2px 2px #000;
+}
+
+#result {
+    font-size: 3rem;
+    margin: 30px auto;
+    padding: 15px;
+    background: #333;
+    border-radius: 15px;
+    width: fit-content;
+    box-shadow: 0 0 10px #ffd700;
+    text-align: center;
+}
+
+button {
+    background: linear-gradient(to bottom, #ffcc00, #cc9900);
+    color: #000;
+    font-size: 1.5rem;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to bottom, #ffe066, #b38f00);
+}
+
+#reward, #status {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}

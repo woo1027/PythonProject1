@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <title>魚類 RTP 計算與調整</title>
+</head>
+<body>
+    <h1>魚類 RTP 計算與調整</h1>
+    <form method="POST">
+        <h2>小魚 Small</h2>
+        出現機率: <input name="small_appearance_prob" value="0.7" step="0.01" type="number" required><br />
+        命中機率: <input name="small_hit_prob" value="0.8" step="0.01" type="number" required><br />
+        獎勵: <input name="small_reward" value="5" step="0.1" type="number" required><br />
+
+        <h2>中魚 Medium</h2>
+        出現機率: <input name="medium_appearance_prob" value="0.25" step="0.01" type="number" required><br />
+        命中機率: <input name="medium_hit_prob" value="0.4" step="0.01" type="number" required><br />
+        獎勵: <input name="medium_reward" value="20" step="0.1" type="number" required><br />
+
+        <h2>頭目魚 Boss</h2>
+        出現機率: <input name="boss_appearance_prob" value="0.05" step="0.01" type="number" required><br />
+        命中機率: <input name="boss_hit_prob" value="0.05" step="0.01" type="number" required><br />
+        獎勵: <input name="boss_reward" value="50" step="0.1" type="number" required><br />
+
+        <h2>其他設定</h2>
+        子彈成本: <input name="bullet_cost" value="1" step="0.01" type="number" required><br />
+        目標 RTP (%): <input name="target_RTP" value="90" step="0.01" type="number" required><br />
+
+        <button type="submit">計算並調整 Boss 獎勵</button>
+    </form>
+
+    {% if result %}
+    <h3>結果</h3>
+    <p>{{ result }}</p>
+    {% endif %}
+
+    {% if adjusted %}
+    <h3>調整結果</h3>
+    <p>{{ adjusted }}</p>
+    {% endif %}
+</body>
+</html>

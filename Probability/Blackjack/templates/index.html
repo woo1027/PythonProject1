@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Blackjack 遊戲</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Blackjack 互動遊戲</h1>
+        <button class="btn" id="startBtn">開始新遊戲</button>
+
+        <div class="hand-container">
+            <div class="hand-section">
+                <h2>玩家手牌</h2>
+                <div id="playerCards" class="hand-cards"></div>
+                <div class="btn-group">
+                    <button class="btn" id="hitBtn" disabled>抽牌（Hit）</button>
+                    <button class="btn" id="standBtn" disabled>停牌（Stand）</button>
+                </div>
+            </div>
+
+            <div class="hand-section">
+                <h2>莊家手牌</h2>
+                <div id="dealerCards" class="hand-cards"></div>
+            </div>
+        </div>
+
+        <h2 id="result" class="result-text"></h2>
+    </div>
+</body>
+</html>
