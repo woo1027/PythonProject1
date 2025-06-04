@@ -19,6 +19,8 @@ python slot_app.py
 ---
 
 
+## 玩家體驗化
+- 加入free spin 與 wild機制以提升玩家黏著度
 
 
 
